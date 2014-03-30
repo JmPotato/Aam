@@ -11,6 +11,7 @@ Requirements:
     1.Jinja2
     2.Mistune
     3.Pygments
+    4.Parguments
 
 Installing mistune with pip:
 
