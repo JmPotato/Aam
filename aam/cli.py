@@ -7,6 +7,9 @@ import shutil
 from .utils import *
 from .options import *
 
+from reader.reader import *
+from generator.render import *
+
 import aam
 
 doc = """Aam v%s
@@ -24,6 +27,12 @@ from parguments import Parguments
 
 parguments = Parguments(doc, version=aam.__version__)
 
+def pre_init():
+    hub.root.path = os.path.dirname(__file__)
+    hub.root.template_dir = os.path.join(os.path.dirname(__file__),'templates')
+    hub.root.static_dir = os.path.join(os.path.dirname(__file__), 'static')
+    hub.site.path = os.getcwd()
+
 @parguments.command
 def init():
     """
@@ -33,11 +42,8 @@ def init():
     Options:
         -h --help               Show this screen and exit.
     """
-    hub.root.path = os.path.dirname(__file__)
-    hub.root.template_dir = os.path.join(os.path.dirname(__file__),'templates')
-    hub.root.static_dir = os.path.join(os.path.dirname(__file__), 'static')
-    hub.site.path = os.getcwd()
-    shutil.copyfile(os.path.join(hub.root.path, 'config.py'), 'config.py')
+    pre_init()
+    shutil.copyfile(os.path.join(hub.root.path, 'config.ini'), 'config.ini')
     mkdir("pages")
     mkdir("deploy")
     print("Please edit config.py to config your site")
@@ -51,7 +57,8 @@ def build():
     Options:
         -h --help               Show this screen and exit.
     """
-    pass
+    pre_init()
+    read_config()
 
 def main():
     parguments.run()
