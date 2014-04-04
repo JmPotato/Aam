@@ -1,0 +1,4 @@
+recursive-include aam/templates *.*
+recursive-include aam/static *.*
+include aam/config.ini
+include README.md
