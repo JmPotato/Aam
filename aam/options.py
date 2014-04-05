@@ -22,4 +22,3 @@ class DictSpace(dict):
 hub = DictSpace()
 hub.root = DictSpace()
 hub.site = DictSpace()
-hub.context = DictSpace()

@@ -29,9 +29,10 @@ parguments = Parguments(doc, version=aam.__version__)
 
 def pre_init():
     hub.root.path = os.path.dirname(__file__)
-    hub.root.template_dir = os.path.join(os.path.dirname(__file__),'templates')
-    hub.root.static_dir = os.path.join(os.path.dirname(__file__), 'static')
+    hub.root.template_path = os.path.join(os.path.dirname(__file__),'templates')
+    hub.root.static_path = os.path.join(os.path.dirname(__file__), 'static')
     hub.site.path = os.getcwd()
+    hub.site.page_path = os.path.join(hub.site.path, 'pages')
 
 @parguments.command
 def init():
@@ -59,6 +60,7 @@ def build():
     """
     pre_init()
     read_config()
+    read_page()
 
 def main():
     parguments.run()
