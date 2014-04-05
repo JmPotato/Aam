@@ -13,7 +13,7 @@ Requirements:
     3.Pygments
     4.Parguments
 
-Installing Aam with pip:
+Install Aam with pip:
 
     $ (sudo) pip install aam
 
