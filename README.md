@@ -13,10 +13,39 @@ Requirements:
     3.Pygments
     4.Parguments
 
-Installing mistune with pip:
+Installing Aam with pip:
 
-    $ pip install aam
+    $ (sudo) pip install aam
 
-How to use:
+Or you can install with Git:
 
-###Coming soon......
+    $ git clone git://github.com/JmPotato/Aam
+    $ cd Aam
+    $ (sudo) python setup.py install
+
+
+Usage
+====
+
+First, you need to creat a new site:
+
+    $ mkdir site
+    $ cd site
+    $ aam init
+
+Then, edit the config file:
+
+    $ vim config.ini
+
+Write a page like this and save it to `Hello.md` :
+
+    title: Hello World
+    date: 2014.7.1
+
+    ----
+
+    Hello, World!
+
+Build your about me site:
+
+    $ aam build
