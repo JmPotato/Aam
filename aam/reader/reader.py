@@ -2,7 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+import re
 import ConfigParser
+
+from StringIO import StringIO
 
 from aam.options import hub
 from .markdown import MyRenderer
@@ -22,4 +25,22 @@ def read_config():
     hub.site.url = parser.get("settings", "site_url").decode('utf-8')
 
 def read_page():
-    pass
+    page_list = []
+    all_pages = os.listdir(hub.site.page_path)
+    os.chdir(hub.site.page_path)
+    for page in all_pages:
+        if page.split('.')[1] != 'md':
+            continue
+        page_content = {"title": "", "date": "", "content": ""}
+        p = open(page).read()
+        metas = p.split('----')[0].strip()
+        for meta in StringIO(metas):
+            try:
+                name, value = meta.split(':')
+                name = name.strip().lower()
+                page_content[name.strip()] = value.strip()
+            except:
+                pass
+        page_content["content"] = p.split('----')[1].strip()
+        page_list.append(page_content)
+    hub.site.pages = page_list
