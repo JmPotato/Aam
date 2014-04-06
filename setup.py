@@ -14,7 +14,7 @@ setup(
     author_email='ghzpotato@gmail.com',
     url='https://github.com/JmPotato/Aam',
     packages=find_packages(),
-    description='Aam: a lightweight about me site generator',
+    description='a lightweight about me site generator',
     keywords="Aam, about me, site, static, static page, static site, generator",
     entry_points={
         'console_scripts': ['aam=aam.cli:main'],
