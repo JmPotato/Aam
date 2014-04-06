@@ -9,7 +9,7 @@ from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
 def render():
     env = Environment(
-        loader=FileSystemLoader(hub.root.template_path),
+        loader=FileSystemLoader(hub.root.template_path, encoding='utf-8'),
         autoescape=False
     )
     env.globals.update(

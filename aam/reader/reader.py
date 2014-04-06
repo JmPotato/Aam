@@ -41,5 +41,6 @@ def read_page():
             except:
                 pass
         page_content["content"] = md_to_html(p.split('----')[1].strip())
+        page_content["title"] = page_content["title"].replace(' ','')
         page_list.append(page_content)
     hub.site.pages = page_list
