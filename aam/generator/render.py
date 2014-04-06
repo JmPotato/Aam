@@ -14,6 +14,7 @@ def render():
     )
     env.globals.update(
         title = hub.site.name,
+        site_url = hub.site.url,
         site_name = hub.site.name,
         site_owner = hub.site.owner,
         pages = hub.site.pages,
