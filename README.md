@@ -9,7 +9,7 @@ Installation
 Requirements:
 
     1.Jinja2
-    2.Mistune
+    2.Misaka
     3.Pygments
     4.Parguments
 
@@ -41,7 +41,8 @@ Write a page like this and save it to `Hello.md` :
 
     title: Hello World
     date: 2014.7.1
-
+    description: The first page
+    
     ----
 
     Hello, World!

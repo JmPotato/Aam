@@ -1,20 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import mistune
+import re
+import misaka
 
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from pygments.lexers import get_lexer_by_name
 
-class MyRenderer(mistune.Renderer):
-    def block_code(self, code, lang):
-        if not lang:
-            return '\n<pre><code>%s</code></pre>\n' % \
-                mistune.escape(code)
-        lexer = get_lexer_by_name(lang, stripall=True)
-        formatter = HtmlFormatter()
-        return highlight(code, lexer, formatter)
+class MyRender(misaka.HtmlRenderer, misaka.SmartyPants):
+    def block_code(self, code, language):
+        if language:
+            lexer = get_lexer_by_name(language, stripall=True)
+        else:
+            return "<pre><code>%s</code></pre>" % code.strip()
+
+        formatter = HtmlFormatter(noclasses=False, linenos=False)
+
+        return '<div class="highlight-pre">%s</div>' % highlight(code, lexer, formatter)
 
     def autolink(self, link, is_email):
         if is_email:
