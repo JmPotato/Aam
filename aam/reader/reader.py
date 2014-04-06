@@ -7,9 +7,8 @@ import ConfigParser
 
 from StringIO import StringIO
 
+from aam.utils import md_to_html
 from aam.options import hub
-from .markdown import MyRenderer
-from aam.utils import to_unicode
 
 def read_config():
     config_path = os.path.join(hub.site.path, 'config.ini')
@@ -31,7 +30,7 @@ def read_page():
     for page in all_pages:
         if page.split('.')[1] != 'md':
             continue
-        page_content = {"title": "", "date": "", "content": ""}
+        page_content = {"title": "", "date": "", "description": "","content": ""}
         p = open(page).read()
         metas = p.split('----')[0].strip()
         for meta in StringIO(metas):
@@ -41,6 +40,6 @@ def read_page():
                 page_content[name.strip()] = value.strip()
             except:
                 pass
-        page_content["content"] = p.split('----')[1].strip()
+        page_content["content"] = md_to_html(p.split('----')[1].strip())
         page_list.append(page_content)
     hub.site.pages = page_list

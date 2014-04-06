@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="/static/yue.css" type="text/css">
-    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <link rel="stylesheet" href="static/yue.css" type="text/css">
+    <link rel="stylesheet" href="static/style.css" type="text/css">
 </head>
 
 <body>
 <div class="wrapper yue">
     <header>
-        <h1 class="name center"><a href="/">{{ site.name }}</a></h1>
+        <h1 class="name center"><a href="{{ site_url }}">{{ site_name }}</a></h1>
         <nav class="center nav">
              {% for page in pages %}
-             <a href="{{ page.url }}">{{ page.name }}</a>
+             <a href="/{{ page.title }}.html">{{ page.title }}</a>
              {% endfor %}
         </nav>
     </header>
@@ -26,7 +26,7 @@
         Powered by <a href="https://github.com/JmPotato/Aam">Aam</a> &
         Theme <a href="https://github.com/whtsky/catsup-theme-clean">Clean</a> by
         <a href="http://whouz.com">whtsky</a> and modified by
-        <a href="http://ricter.info">Ricter</a>
+        <a href="http://ricter.me">Ricter</a> and <a href="http://ipotato.me">JmPotato</a>
     </footer>
 </div>
 </body>

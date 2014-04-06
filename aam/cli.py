@@ -33,6 +33,7 @@ def pre_init():
     hub.root.static_path = os.path.join(os.path.dirname(__file__), 'static')
     hub.site.path = os.getcwd()
     hub.site.page_path = os.path.join(hub.site.path, 'pages')
+    hub.site.deploy_path = os.path.join(hub.site.path, 'deploy')
 
 @parguments.command
 def init():
@@ -44,9 +45,10 @@ def init():
         -h --help               Show this screen and exit.
     """
     pre_init()
-    shutil.copyfile(os.path.join(hub.root.path, 'config.ini'), 'config.ini')
     mkdir("pages")
     mkdir("deploy")
+    shutil.copyfile(os.path.join(hub.root.path, 'config.ini'), 'config.ini')
+    shutil.copytree(hub.root.static_path, os.path.join(hub.site.deploy_path, "static"))
     print("Please edit config.py to config your site")
 
 @parguments.command
@@ -61,6 +63,7 @@ def build():
     pre_init()
     read_config()
     read_page()
+    render()
 
 def main():
     parguments.run()

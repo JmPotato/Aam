@@ -2,8 +2,10 @@
 
 {% block content %}
 <article class="article">
-    <h2 class="center title">{{ post.title }}</h2>
-    <aside>{{ page.description }}</aside>
+    <h2 class="center title">{{ page.title }}</h2>
+    <aside>
+        <time class="center">{{ page.description }}</time>
+    </aside>
     <article class="content">
     {{ page.content }}
     </article>
