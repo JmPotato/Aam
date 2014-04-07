@@ -2,7 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import os
+import sys
 import shutil
+
+major = sys.version_info[0]
+if major < 3:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
 from .utils import *
 from .options import *
