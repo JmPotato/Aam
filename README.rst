@@ -8,10 +8,10 @@ Installation
 
 Requirements:
 
-    1.Jinja2
-    2.Misaka
-    3.Pygments
-    4.Parguments
+* Jinja2
+* Misaka
+* Pygments
+* Parguments
 
 Install Aam with pip ::
 
