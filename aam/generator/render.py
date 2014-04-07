@@ -31,3 +31,5 @@ def render():
     output_path = os.path.join(hub.site.path, "deploy/home.html")
     with open(output_path, "w") as f:
         f.write(home)
+    if not os.path.exists(hub.site.static_path):
+        shutil.copytree(hub.root.static_path, os.path.join(hub.site.deploy_path, "static"))

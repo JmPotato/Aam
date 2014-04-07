@@ -40,6 +40,7 @@ def pre_init():
     hub.site.path = os.getcwd()
     hub.site.page_path = os.path.join(hub.site.path, 'pages')
     hub.site.deploy_path = os.path.join(hub.site.path, 'deploy')
+    hub.site.static_path = os.path.join(hub.site.deploy_path, 'static')
 
 @parguments.command
 def init():
