@@ -14,7 +14,7 @@
         <h1 class="name center"><a href="{{ site_url }}">{{ site_name }}</a></h1>
         <nav class="center nav">
              {% for page in pages %}
-             <a href="/{{ page.title.replace(' ','') }}.html">{{ page.title }}</a>
+             <a href="/{{ page.link }}">{{ page.title }}</a>
              {% endfor %}
         </nav>
     </header>

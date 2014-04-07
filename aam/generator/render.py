@@ -20,7 +20,7 @@ def render():
         pages = hub.site.pages,
     )
     for page in hub.site.pages:
-        output_path = os.path.join(hub.site.path, "deploy/%s" % page['title'].strip().replace(' ','') + ".html")
+        output_path = os.path.join(hub.site.path, "deploy/%s" % page['link'])
         html = env.get_template("page.html").render(
             title = hub.site.name + " | " + page['title'],
             page = page,
