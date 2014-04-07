@@ -7,6 +7,8 @@ import aam
 
 version = aam.__version__
 
+long_description = open('README.rst').read()
+
 setup(
     name='aam',
     version=version,
@@ -15,6 +17,7 @@ setup(
     url='https://github.com/JmPotato/Aam',
     packages=find_packages(),
     description='a lightweight about me site generator',
+    long_description=long_description,
     keywords="Aam, about me, site, static, static page, static site, generator",
     entry_points={
         'console_scripts': ['aam=aam.cli:main'],
