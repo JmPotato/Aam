@@ -6,7 +6,7 @@ Aam means "All about me". It is a lightweight about me site generator. To compar
 Installation
 ===============
 
-Requirements ::
+Requirements:
 
 * Jinja2
 * Misaka
