@@ -2,5 +2,5 @@ recursive-include aam/templates *.*
 recursive-include aam/static *.*
 include aam/config.ini
 include LICENSE
-include README.md
+include README.rst
 include requirements.txt
