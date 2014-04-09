@@ -55,7 +55,6 @@ def init():
     mkdir("pages")
     mkdir("deploy")
     shutil.copyfile(os.path.join(hub.root.path, 'config.ini'), 'config.ini')
-    shutil.copytree(hub.root.static_path, os.path.join(hub.site.deploy_path, "static"))
     print("Please edit config.py to config your site")
 
 @parguments.command
@@ -71,6 +70,7 @@ def build():
     read_config()
     read_page()
     render()
+    print("Build Finished.")
 
 def main():
     parguments.run()

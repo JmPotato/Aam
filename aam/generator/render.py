@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+import shutil
 
 from aam.options import *
+from aam.utils import mkdir
 
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
 
@@ -19,6 +21,12 @@ def render():
         site_owner = hub.site.owner,
         pages = hub.site.pages,
     )
+    if not os.path.exists(hub.site.deploy_path):
+        print("Can't find deploy folder. Please creat a new one or use \'aam init\'.")
+        return
+    shutil.rmtree(hub.site.deploy_path)
+    os.chdir(hub.site.path)
+    mkdir("deploy")
     for page in hub.site.pages:
         output_path = os.path.join(hub.site.path, "deploy/%s" % page['link'])
         html = env.get_template("page.html").render(
@@ -31,5 +39,4 @@ def render():
     output_path = os.path.join(hub.site.path, "deploy/home.html")
     with open(output_path, "w") as f:
         f.write(home)
-    if not os.path.exists(hub.site.static_path):
-        shutil.copytree(hub.root.static_path, os.path.join(hub.site.deploy_path, "static"))
+    shutil.copytree(hub.root.static_path, hub.site.static_path)

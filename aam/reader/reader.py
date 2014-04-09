@@ -25,6 +25,10 @@ def read_config():
 
 def read_page():
     page_list = []
+    if not os.path.exists(hub.site.page_path):
+        print("Can't find any page. Please make sure you have built a site environment.")
+        print("You can use \'aam -h\' to get help")
+        return
     all_pages = os.listdir(hub.site.page_path)
     os.chdir(hub.site.page_path)
     for page in all_pages:
