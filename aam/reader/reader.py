@@ -14,7 +14,7 @@ def read_config():
     config_path = os.path.join(hub.site.path, 'config.ini')
     if not os.path.exists(config_path):
         print("Can't find any config file.")
-        return
+        exit(1)
 
     parser = ConfigParser.SafeConfigParser()
     parser.read(config_path)
@@ -28,7 +28,7 @@ def read_page():
     if not os.path.exists(hub.site.page_path):
         print("Can't find any page. Please make sure you have built a site environment.")
         print("You can use \'aam -h\' to get help")
-        return
+        exit(1)
     all_pages = os.listdir(hub.site.page_path)
     os.chdir(hub.site.page_path)
     for page in all_pages:

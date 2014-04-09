@@ -23,7 +23,7 @@ def render():
     )
     if not os.path.exists(hub.site.deploy_path):
         print("Can't find deploy folder. Please creat a new one or use \'aam init\'.")
-        return
+        exit(1)
     shutil.rmtree(hub.site.deploy_path)
     os.chdir(hub.site.path)
     mkdir("deploy")
