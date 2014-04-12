@@ -28,15 +28,17 @@ def render():
     os.chdir(hub.site.path)
     mkdir("deploy")
     for page in hub.site.pages:
-        output_path = os.path.join(hub.site.path, "deploy/%s" % page['link'])
-        html = env.get_template("page.html").render(
-            title = hub.site.name + " | " + page['title'],
-            page = page,
-            )
-        with open(output_path, "w") as f:
-            f.write(html)
-    home = env.get_template("home.html").render()
-    output_path = os.path.join(hub.site.path, "deploy/home.html")
-    with open(output_path, "w") as f:
-        f.write(home)
+        if page["type"] == "page":
+            output_path = os.path.join(hub.site.path, "deploy/%s" % page['link'])
+            html = env.get_template("page.html").render(
+                title = hub.site.name + " | " + page['title'],
+                page = page,
+                )
+            with open(output_path, "w") as f:
+                f.write(html)
+        elif page["type"] == "home":
+            home = env.get_template("home.html").render(home = page)
+            output_path = os.path.join(hub.site.deploy_path, "Home.html")
+            with open(output_path, "w") as f:
+                f.write(home)
     shutil.copytree(hub.root.static_path, hub.site.static_path)

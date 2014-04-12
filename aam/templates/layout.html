@@ -13,7 +13,7 @@
     <header>
         <h1 class="name center"><a href="{{ site_url }}">{{ site_name }}</a></h1>
         <nav class="center nav">
-             {% for page in pages %}
+             {% for page in pages if page.type == "page" %}
              <a href="/{{ page.link }}">{{ page.title }}</a>
              {% endfor %}
         </nav>

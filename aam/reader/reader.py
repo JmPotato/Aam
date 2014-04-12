@@ -32,9 +32,12 @@ def read_page():
     all_pages = os.listdir(hub.site.page_path)
     os.chdir(hub.site.page_path)
     for page in all_pages:
-        if page.split('.')[1] != 'md':
-            continue
-        page_content = {"title": "", "date": "", "description": "","content": "", "link": ""}
+        try:
+            if page.split('.')[1] != 'md':
+                continue
+        except:
+            pass
+        page_content = {"title": "", "date": "", "description": "", "type": "","content": "", "link": ""}
         p = open(page).read()
         metas = p.split('----')[0].strip()
         for meta in StringIO(metas):
@@ -47,4 +50,4 @@ def read_page():
         page_content["link"] = os.path.splitext(page)[0].replace(' ','') + '.html'
         page_content["content"] = md_to_html(p.split('----')[1].strip())
         page_list.append(page_content)
-    hub.site.pages = page_list
+    hub.site.pages = sorted(page_list, key = lambda x:x['title'][0])
