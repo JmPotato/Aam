@@ -37,12 +37,21 @@ Then, edit the config file ::
 
     $ vim config.ini
 
+You need to build a home page befor writing a page. A home page is like this ::
+
+    title: Welcome
+    date: 2014.7.1
+    type: home
+    ----
+
+    Weclome to Aam!
+
 Write a page like this and save it to `Hello.md` ::
 
     title: Hello World
     date: 2014.7.1
     description: The first page
-    
+    type: page
     ----
 
     Hello, World!
@@ -50,3 +59,15 @@ Write a page like this and save it to `Hello.md` ::
 Build your about me site ::
 
     $ aam build
+
+Notice
+===============
+
+Every page file needs to have all the metas, it includes ::
+
+* title
+* date
+* description
+* type
+
+If you miss any one of them, your site will be incomplete.
