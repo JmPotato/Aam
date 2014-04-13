@@ -3,6 +3,9 @@
 
 import os
 import re
+import json
+import urllib2
+import datetime
 import ConfigParser
 
 from StringIO import StringIO
@@ -19,9 +22,12 @@ def read_config():
     parser = ConfigParser.SafeConfigParser()
     parser.read(config_path)
 
-    hub.site.name = parser.get("settings", "site_name").decode('utf-8')
-    hub.site.owner = parser.get("settings", "site_owner").decode('utf-8')
-    hub.site.url = parser.get("settings", "site_url").decode('utf-8')
+    hub.site.name = parser.get("main_settings", "site_name").decode('utf-8')
+    hub.site.owner = parser.get("main_settings", "site_owner").decode('utf-8')
+    hub.site.url = parser.get("main_settings", "site_url").decode('utf-8')
+    hub.site.github_name = parser.get("main_settings", "github_name").decode('utf-8')
+
+    hub.site.repo_switch = parser.getboolean("function_switch", "show_github_repo")
 
 def read_page():
     page_list = []
@@ -51,3 +57,16 @@ def read_page():
         page_content["content"] = md_to_html(p.split('----')[1].strip())
         page_list.append(page_content)
     hub.site.pages = sorted(page_list, key = lambda x:x['title'][0])
+    get_github_repo()
+
+def get_github_repo():
+    repo_list = []
+    all_repos = json.JSONDecoder().decode(urllib2.urlopen('https://api.github.com/users/%s/repos' % hub.site.github_name).read())
+    for repo in all_repos:
+        repo_content = {"name": "","star": "","url": "","description": ""}
+        repo_content["name"] = repo["name"]
+        repo_content["star"] = repo["stargazers_count"]
+        repo_content["url"] = repo["html_url"]
+        repo_content["description"] = repo["description"]
+        repo_list.append(repo_content)
+    hub.site.github_repo = repo_list

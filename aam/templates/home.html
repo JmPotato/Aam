@@ -8,3 +8,11 @@
     </article>
 </article>
 {% endblock %}
+
+{% block linker %}
+{% if repo_switch %}
+<div class="link center">
+    <a href="/github_repo.html">My Github Repo</a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<article class="article">
+    <h2 class="center title">My Github Repo</h2>
+    <aside>
+        <time class="center">Creation</time>
+    </aside>
+    <article class="content">
+        <table>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Star</td>
+        </tr>
+        {% for repo in repos %}
+        <tr>
+            <td><a href="{{ repo.url }}">{{ repo.name }}</a></td>
+            <td>{{ repo.description }}</td>
+            <td>{{ repo.star }}</td>
+        </tr>
+        {% endfor%}
+        </table>
+    </article>
+</article>
+{% endblock %}
