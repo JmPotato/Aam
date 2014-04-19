@@ -297,6 +297,9 @@ textarea.post {
     margin-bottom:40px;
     border-bottom:2px solid #EEE;
 }
+.link a {
+    padding:5px;
+}
 @media screen and (max-width:980px) {
     .wrapper {
     width:100%;

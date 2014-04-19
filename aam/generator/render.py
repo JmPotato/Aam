@@ -21,6 +21,7 @@ def render():
         site_owner = hub.site.owner,
         pages = hub.site.pages,
         repo_switch = hub.site.repo_switch,
+        book_switch = hub.site.book_switch,
     )
 
     if not os.path.exists(hub.site.deploy_path):
@@ -51,6 +52,14 @@ def render():
                 repos = hub.site.github_repo,
                 )
         with open(os.path.join(hub.site.deploy_path, "github_repo.html"), "w") as f:
+                f.write(html)
+
+    if hub.site.book_switch:
+        html = env.get_template("douban.html").render(
+                title = hub.site.name + " | " + "Douban Book",
+                douban_name = hub.site.douban_name,
+                )
+        with open(os.path.join(hub.site.deploy_path, "douban_book.html"), "w") as f:
                 f.write(html)
 
     shutil.copytree(hub.root.static_path, hub.site.static_path)
