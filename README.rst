@@ -9,7 +9,7 @@ Installation
 Requirements:
 
 * Jinja2
-* Misaka
+* Mistune
 * Pygments
 * Parguments
 

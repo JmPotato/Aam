@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import re
-import misaka
+import mistune
 
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 
-class MyRender(misaka.HtmlRenderer, misaka.SmartyPants):
+class MyRenderer(mistune.Renderer):
     def block_code(self, code, language):
         if language:
             lexer = get_lexer_by_name(language, stripall=True)

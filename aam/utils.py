@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 import os
-import misaka
+import mistune
 
-from reader.markdown import MyRender
+from reader.markdown import MyRenderer
 
 def to_unicode(value):
     if isinstance(value, unicode):
@@ -23,10 +23,7 @@ def mkdir(path):
 
 def md_to_html(text):
     text = to_unicode(text)
-    render = MyRender(flags=misaka.HTML_USE_XHTML)
-    md = misaka.Markdown(
-        render,
-        extensions=misaka.EXT_FENCED_CODE | misaka.EXT_AUTOLINK,
-    )
+    renderer = MyRenderer()
+    md = mistune.Markdown(renderer=renderer)
     return md.render(text)
 
