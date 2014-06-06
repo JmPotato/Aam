@@ -10,10 +10,14 @@
 {% endblock %}
 
 {% block linker %}
-{% if repo_switch %}
+{% if repo_switch or book_switch %}
 <div class="link center">
+    {% if repo_switch %}
     <a href="/github_repo.html">My Github Repo</a>
+    {% endif %}
+    {% if book_switch %}
     <a href="/douban_book.html">Books</a>
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
