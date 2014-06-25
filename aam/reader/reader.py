@@ -27,6 +27,7 @@ def read_config():
     hub.site.url = parser.get("main_settings", "site_url").decode('utf-8')
     hub.site.github_name = parser.get("main_settings", "github_name").decode('utf-8')
     hub.site.douban_name = parser.get("main_settings", "douban_name").decode('utf-8')
+    hub.site.analytics = parser.get("main_settings", "analytics").decode('utf-8')
 
     hub.site.repo_switch = parser.getboolean("function_switch", "show_github_repo")
     hub.site.book_switch = parser.getboolean("function_switch", "show_douban_book")

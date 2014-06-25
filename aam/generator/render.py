@@ -22,6 +22,7 @@ def render():
         pages = hub.site.pages,
         repo_switch = hub.site.repo_switch,
         book_switch = hub.site.book_switch,
+        analytics = hub.site.analytics,
     )
 
     if not os.path.exists(hub.site.deploy_path):
