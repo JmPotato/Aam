@@ -66,7 +66,7 @@ Notice
 Every page file needs to have all the metas, it includes
 
 * title
-* dategenerator
+* date
 * description
 * type
 
