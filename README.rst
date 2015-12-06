@@ -1,7 +1,7 @@
 All About "All about me"
 ----------------
 
-Aam means "All about me". It is a lightweight about me site generator. To compare with blog, Aam is for pages not posts. So you can use it to build your own pages to introduce everything about you.
+Aam means "All about me". It is a lightweight about me site generator. To compare with a blog, Aam is for pages not posts. So you can use it to build your own pages to introduce everything about you.
 
 Installation
 ===============
@@ -37,7 +37,7 @@ Then, edit the config file ::
 
     $ vim config.ini
 
-You need to build a home page befor writing a page. A home page is like this ::
+You need to build a home page befor writing a page. A home page should like this ::
 
     title: Welcome
     date: 2014.7.1
@@ -46,7 +46,7 @@ You need to build a home page befor writing a page. A home page is like this ::
 
     Weclome to Aam!
 
-Write a page like this and save it to `Hello.md` ::
+A normal page which named `Hello.md` ::
 
     title: Hello World
     date: 2014.7.1
@@ -56,7 +56,7 @@ Write a page like this and save it to `Hello.md` ::
 
     Hello, World!
 
-Build your about me site ::
+Generate your about me site ::
 
     $ aam build
 
@@ -66,7 +66,7 @@ Notice
 Every page file needs to have all the metas, it includes
 
 * title
-* date
+* dategenerator
 * description
 * type
 
