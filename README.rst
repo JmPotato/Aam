@@ -1,7 +1,7 @@
 All About "All about me"
 ----------------
 
-Aam means "All about me". It is a lightweight about me site generator. To compare with a blog, Aam is for pages not posts. So you can use it to build your own pages to introduce everything about you.
+Aam means "All about me". It is a lightweight about-me-site generator. To compare with a blog, Aam is for pages not posts. So you can use it to build your own resume page.
 
 Installation
 ===============
@@ -17,7 +17,7 @@ Install Aam with pip ::
 
     $ (sudo) pip install aam
 
-Or you can install with Git ::
+With Git ::
 
     $ git clone git://github.com/JmPotato/Aam
     $ cd Aam
@@ -27,7 +27,7 @@ Or you can install with Git ::
 Usage
 ===============
 
-First, you need to creat a new site ::
+First of all, creat a new site ::
 
     $ mkdir site
     $ cd site
@@ -37,7 +37,7 @@ Then, edit the config file ::
 
     $ vim config.ini
 
-You need to build a home page befor writing a page. A home page should like this ::
+You need to have a home page befor a normal page. A home page should like this ::
 
     title: Welcome
     date: 2014.7.1
@@ -46,7 +46,7 @@ You need to build a home page befor writing a page. A home page should like this
 
     Weclome to Aam!
 
-A normal page which named `Hello.md` ::
+A normal page named `Hello.md` ::
 
     title: Hello World
     date: 2014.7.1
@@ -56,18 +56,18 @@ A normal page which named `Hello.md` ::
 
     Hello, World!
 
-Generate your about me site ::
+Generate the site ::
 
     $ aam build
 
 Notice
 ===============
 
-Every page file needs to have all the metas, it includes
+Every page file needs to include four metas.
 
 * title
 * date
 * description
 * type
 
-If you miss any one of them, your site will be incomplete.
+If you miss any one of them, the site won't be complete.
