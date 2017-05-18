@@ -13,8 +13,8 @@ if major < 3:
 from .utils import *
 from .options import *
 
-from .reader.reader import *
-from .generator.render import *
+from reader.reader import *
+from generator.render import *
 
 import aam
 

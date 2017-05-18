@@ -4,11 +4,11 @@
 import os
 import re
 import json
-import urllib.request, urllib.error, urllib.parse
+import urllib2
 import datetime
-import configparser
+import ConfigParser
 
-from io import StringIO
+from StringIO import StringIO
 
 from aam.utils import md_to_html
 from aam.options import hub
@@ -19,7 +19,7 @@ def read_config():
         print("Can't find any config file.")
         exit(1)
 
-    parser = configparser.SafeConfigParser()
+    parser = ConfigParser.SafeConfigParser()
     parser.read(config_path)
 
     hub.site.name = parser.get("main_settings", "site_name").decode('utf-8')
@@ -64,7 +64,7 @@ def read_page():
 
 def get_github_repo():
     repo_list = []
-    all_repos = json.JSONDecoder().decode(urllib.request.urlopen('https://api.github.com/users/%s/repos' % hub.site.github_name).read())
+    all_repos = json.JSONDecoder().decode(urllib2.urlopen('https://api.github.com/users/%s/repos' % hub.site.github_name).read())
     for repo in all_repos:
         repo_content = {"name": "","star": "","url": "","description": ""}
         repo_content["name"] = repo["name"]
